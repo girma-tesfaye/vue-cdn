@@ -7,8 +7,18 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+    <h2>Hello</h2>
     <div id="app">
-
+        <div v-for="arr in array" @key="arr.experience">
+            <div v-show="count == arr.id"><!-- <div v-if="count == arr.id"> -->
+                <h5>Name: </h5><span><p>{{arr.name}}</p></span>
+                <h5>Tittle: </h5><span><p>{{arr.tittle}}</p></span>
+                <h5>Experience: </h5><span><p>{{arr.experience}} years</p></span>
+            </div>
+        </div>
+        
+        <button @click="increaseExperience" style="padding: 5px 10px;">Increase years of experience</button>
+        <button @click="changeName" style="padding: 5px 10px; margin: 10px;">Another</button>
     </div>
     <script src="app.js"></script>
 </body>
