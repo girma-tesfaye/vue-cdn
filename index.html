@@ -9,17 +9,45 @@
 <body>
     <h2>Hello</h2>
     <div id="app">
-        <div v-for="arr in array" @key="arr.experience">
-            <div v-show="count == arr.id"><!-- <div v-if="count == arr.id"> -->
+        <ul>
+            <li v-for="arr in filterDevs" @key="arr.experience" :class="{senior: arr.isSenior}" @click="handleClass(arr)">
+            <!-- <ul v-for="arr in array" @key="arr.experience"> -->
+            <!-- <li v-show="count == arr.id" :class="{senior: arr.isSenior}" @click="handleClass(arr)"> --><!-- <div v-if="count == arr.id"> -->
                 <h5>Name: </h5><span><p>{{arr.name}}</p></span>
                 <h5>Tittle: </h5><span><p>{{arr.tittle}}</p></span>
                 <h5>Experience: </h5><span><p>{{arr.experience}} years</p></span>
-            </div>
-        </div>
+            </li>
+        </ul>
         
         <button @click="increaseExperience" style="padding: 5px 10px;">Increase years of experience</button>
         <button @click="changeName" style="padding: 5px 10px; margin: 10px;">Another</button>
+        <button @click="filterDevs" style="padding: 5px 10px; margin: 10px;">Filter seniors</button>
     </div>
     <script src="app.js"></script>
+    <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        h2 h5 {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.senior {
+            background: #ff9ed2;
+            color: #fff;
+        }
+    </style>
 </body>
 </html>
